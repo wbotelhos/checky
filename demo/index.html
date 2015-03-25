@@ -1,0 +1,33 @@
+<script src="../vendor/jquery.js"></script>
+<script src="../lib/jquery.checky.js"></script>
+
+<div class="here">
+  <input type="checkbox" class="checky">
+  <input type="checkbox" class="checky">
+  <input type="checkbox" class="checky">
+  <input type="checkbox" class="checky">
+</div>
+
+<div class="there">
+  <input type="radio" name="radio-1" value="1" class="checky">
+  <input type="radio" name="radio-2" value="2" class="checky">
+  <input type="radio" name="radio-3" value="3" class="checky">
+  <input type="radio" name="radio-3" value="4" class="checky">
+</div>
+
+<div class="where">
+  <input type="checkbox" class="checky">
+  <input type="checkbox" class="checky">
+  <input type="checkbox" class="checky">
+  <input type="checkbox" class="checky">
+</div>
+
+<script>
+  $(function() {
+    $('.here').checky({ max: 2, min: 1, style: 'unselect' });
+
+    $('.there').checky({ type: 'radio' });
+
+    $('.where').checky({ style: 'disable', max: 1 });
+  });
+</script>

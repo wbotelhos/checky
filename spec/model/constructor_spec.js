@@ -2,11 +2,11 @@ describe('#contructor', function() {
   'use strict';
 
   beforeEach(function() {
-    this.el = Helper.create('painel');
+    this.el = Helper.create();
   });
 
   afterEach(function() {
-    Helper.clear('.checky');
+    Helper.clear();
   });
 
   it ('saves the raw element', function() {
@@ -59,7 +59,7 @@ describe('#contructor', function() {
     var instance = new Checky('.painel');
 
     // then
-    expect(instance.items.length).toEqual(2);
+    expect(instance.items.length).toEqual(3);
   });
 
   it ('saves the right items', function() {
@@ -71,13 +71,14 @@ describe('#contructor', function() {
 
     expect(items[0].name).toEqual('checkbox-1');
     expect(items[1].name).toEqual('checkbox-2');
+    expect(items[2].name).toEqual('checkbox-3');
   });
 
-  it ('saves the check all item', function() {
+  it ('initiates with a empty array of checked items', function() {
     // when
     var instance = new Checky('.painel');
 
     // then
-    expect(instance.all[0].name).toEqual('checkbox-all');
+    expect(instance.checkeds).toEqual([]);
   });
 });

@@ -1,4 +1,6 @@
 describe('#builder', function() {
+  'use strict';
+
   beforeEach(function() {
     this.el = Helper.create();
   });
@@ -67,7 +69,7 @@ describe('#builder', function() {
   });
 
   context('when options is a method name', function() {
-    Checky.prototype.method = function(a, b) {};
+    Checky.prototype.method = function() {};
 
     context('and it exists', function() {
       it ('is called with given args', function() {
@@ -92,7 +94,7 @@ describe('#builder', function() {
         spyOn(Checky.prototype.method, 'apply');
 
         // when
-        var chain = this.el.checky('method', 'a', 'b');
+        this.el.checky('method', 'a', 'b');
 
         // then
         expect(Checky.prototype.method.apply).toHaveBeenCalledWith(instance, ['a', 'b']);

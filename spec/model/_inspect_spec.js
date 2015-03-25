@@ -9,39 +9,93 @@ describe('#_inspect', function() {
     Helper.clear();
   });
 
-  context('when all of items is not checked', function() {
-    it ('does not check all item', function() {
-      // given
-      var instance = new Checky('.painel');
+  context('with more than max', function() {
+    context('with more', function() {
+      context('when style is unselect', function() {
+        it ('calls unselect method', function() {
+          // given
+          var instance = new Checky('.painel'),
+            items    = instance.items,
+            first    = items[0],
+            second   = items[1];
 
-      instance._create();
+          instance.opt.max   = 1;
+          instance.opt.style = 'unselect';
 
-      spyOn(instance.all, 'prop');
+          spyOn(instance, '_unselect');
 
-      // when
-      instance.items.first().trigger('click');
+          first.checked  = true;
+          second.checked = true;
 
-      // then
-      expect(instance.all.prop).toHaveBeenCalledWith('checked', false);
+          // when
+          instance._inspect();
+
+          // then
+          expect(instance._unselect).toHaveBeenCalled();
+        });
+      });
+
+      context('when style is disable', function() {
+        it ('calls disable method', function() {
+          // given
+          var
+            instance = new Checky('.painel'),
+            items    = instance.items,
+            first    = items[0],
+            second   = items[1];
+
+          instance.opt.max   = 1;
+          instance.opt.style = 'disable';
+
+          spyOn(instance, '_disable');
+
+          first.checked  = true;
+          second.checked = true;
+
+          // when
+          instance._inspect();
+
+          // then
+          expect(instance._disable).toHaveBeenCalled();
+        });
+      });
     });
   });
 
-  context('when all of items is checked', function() {
-    it ('checks all item', function() {
+  context('with less then min', function() {
+    it ('puts the first unchecked on queue', function() {
       // given
-      var instance = new Checky('.painel');
+      var
+        instance = new Checky('.painel'),
+        items    = instance.items,
+        first    = items[0],
+        second   = items[1];
 
-      instance._create();
-
-      instance.items[0].checked = true;
-
-      spyOn(instance.all, 'prop');
+      second.checked    = true;
+      instance.checkeds = [second];
+      instance.opt.min  = 2;
 
       // when
-      instance.items.last().trigger('click');
+      instance._inspect();
 
       // then
-      expect(instance.all.prop).toHaveBeenCalledWith('checked', true);
+      expect(instance.checkeds).toEqual([second, first]);
+    });
+
+    it ('checks the first unchecked one', function() {
+      // given
+      var
+        instance = new Checky('.painel'),
+        items    = instance.items,
+        first    = items[0];
+
+      instance.opt.min = 2;
+
+      // when
+      instance._inspect();
+
+      // then
+      expect(instance.checkeds[0].checked).toBeTruthy();
     });
   });
 });

@@ -1,4 +1,4 @@
-# jQuery Checky - A Checkbox Checker
+# jQuery checky - A Checkbox Restrictor
 
 [![Build Status](https://img.shields.io/travis/wbotelhos/checky/master.svg)](https://travis-ci.org/wbotelhos/checky "Travis CI")
 [![Dependency Status](https://david-dm.org/wbotelhos/checky.svg)](https://david-dm.org/wbotelhos/checky "Dependency Status")
@@ -10,7 +10,7 @@
 
 ```
 @version  0.1.0
-@since    2014.11.28
+@since    2014.12.03
 @author   Washington Botelho
 @doc      wbotelhos.com/checky
 ```
@@ -27,8 +27,6 @@
 <script src="jquery.checky.js"></script>
 
 <div>
-  <input type="checkbox" class="checky-all">
-
   <input type="checkbox" class="checky">
   <input type="checkbox" class="checky">
 </div>
@@ -49,8 +47,7 @@ See [bower.io](http://bower.io) for more information.
 ## Options
 
 ```js
-all  : '.checky-all'  // Checkbox responsible to check all of a group.
-item : '.checky-item' // Checkboxes in the group.
+item : '.checky' // Checkboxes in the group.
 ```
 
 ## Contributors

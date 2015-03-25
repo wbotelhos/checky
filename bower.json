@@ -1,6 +1,6 @@
 {
   "authors"     : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
-  "description" : "jQuery Checky - A Checkbox Checker",
+  "description" : "jQuery checky - A Checkbox Restrictor",
 
   "dependencies": {
     "jquery": "2"
@@ -16,7 +16,10 @@
     "checked",
     "jquery",
     "library",
-    "plugin"
+    "plugin",
+    "restricao",
+    "restriction",
+    "restritor"
   ],
 
   "license" : "MIT",

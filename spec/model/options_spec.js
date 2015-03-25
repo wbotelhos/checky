@@ -1,7 +1,5 @@
 describe('#options', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
-  });
+  'use strict';
 
   it ('has the right default values', function() {
     // given
@@ -10,7 +8,9 @@ describe('#options', function() {
     var opt = $.fn.checky.defaults;
 
     // then
-    expect(opt.all).toEqual('.checky-all');
     expect(opt.item).toEqual('.checky');
+    expect(opt.max).toBeUndefined();
+    expect(opt.min).toBeUndefined();
+    expect(opt.type).toEqual('checkbox');
   });
 });
